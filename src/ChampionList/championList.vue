@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <ChampionList></ChampionList>
+    Hello World
   </div>
 </template>
 
 <script>
-import championList from './ChampionList/championList.vue'
-
 export default {
   name: 'app',
-  components: {
-    ChampionList: championList
-  },
   data () {
     return {}
   }
