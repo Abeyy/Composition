@@ -1,16 +1,19 @@
 <template>
-  <div id="app">
+  <div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'app',
-  data () {
-    return {}
+  export default {
+    props: [],
+    data() { return {} },
+    components: {},
+    mounted() {},
+    computed: {},
+    methods: {},
+    watch: {}
   }
-}
 </script>
 
-<style lang="scss"
+<style scoped>
 </style>
