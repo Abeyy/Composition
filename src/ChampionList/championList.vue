@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    Hello World
+    json: {{apiJSON}}
   </div>
 </template>
 
@@ -8,7 +8,13 @@
 export default {
   name: 'app',
   data () {
-    return {}
+    return {
+      apiLink: `http://ddragon.leagueoflegends.com/cdn/8.14.1/data/en_US/champion.json`,
+      apiJSON: ''
+    }
+  },
+  mounted() {
+    this.axios.get(this.apiLink).then(response => (this.apiJSON = response))
   }
 }
 </script>
