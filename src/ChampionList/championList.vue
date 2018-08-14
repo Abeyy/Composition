@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    {{ Aatrox }}
+    {{ apiChampionData }}
   </div>
 </template>
 
@@ -17,22 +17,17 @@ export default {
   },
   mounted() {
     this.axios.get(this.apiLink).then(response => (this.handleAPICall(response)))
-
-    // this.addChampionsToList()
   },
   methods: {
     handleAPICall(response) {
       this.apiJSON.api = response
-      // this.apiJSON = this.apiJSON.api && this.apiJSON.api.data
     },
-    addChampionsToList() {
-    }
   },
   computed: {
-    Aatrox() {
+    apiChampionData() {
       return this.apiJSON.api && this.apiJSON.api.data &&
-            this.apiJSON.api.data && this.apiJSON.api.data.data.Aatrox
-    }
+            this.apiJSON.api.data && this.apiJSON.api.data.data
+    },
   }
 }
 </script>
