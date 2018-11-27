@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    {{ apiChampionData }}
+  <div class="championsList">
+    {{ championsList }}
   </div>
 </template>
 
@@ -11,7 +11,10 @@ export default {
     return {
       //TODO: Add these to champion list
       apiLink: `http://ddragon.leagueoflegends.com/cdn/8.14.1/data/en_US/champion.json`,
-      apiJSON: {api: {}},
+      apiJSON: {
+        api: {},
+        championsObj: {}
+      },
       championsList: [],
     }
   },
@@ -19,16 +22,17 @@ export default {
     this.axios.get(this.apiLink).then(response => (this.handleAPICall(response)))
   },
   methods: {
-    handleAPICall(response) {
+    handleAPICall (response) {
       this.apiJSON.api = response
+      this.apiJSON.championsObj =
+      this.initializeChampionsListFromAPICall(response)
     },
+    initializeChampionsListFromAPICall (response) {
+      let championDataObj = this.apiJSON.api.data.data
+      this.championsList = Object.keys(championDataObj)
+    }
   },
-  computed: {
-    apiChampionData() {
-      return this.apiJSON.api && this.apiJSON.api.data &&
-            this.apiJSON.api.data && this.apiJSON.api.data.data
-    },
-  }
+  computed: {}
 }
 </script>
 
