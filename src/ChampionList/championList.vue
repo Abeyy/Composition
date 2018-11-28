@@ -1,12 +1,20 @@
 <template>
-  <div class="championsList">
-    {{ championsList }}
+  <div class="championListComponent">
+
+
+  <div class="championsList" v-for="(championName, index) in championsList">
+    <ChampionDisplay :championObj="getChampionObjFromName(championName)"></ChampionDisplay>
+  </div>
+
   </div>
 </template>
 
 <script>
+import ChampionDisplay from '../ChampionDisplayComponent/championDisplayComponent.vue'
 export default {
-  name: 'app',
+  components: {
+    ChampionDisplay
+  },
   data () {
     return {
       //TODO: Add these to champion list
@@ -22,9 +30,13 @@ export default {
     this.axios.get(this.apiLink).then(response => (this.handleAPICall(response)))
   },
   methods: {
+    getChampionObjFromName (championName) {
+      console.log(this.apiJSON.championsObj[championName])
+      return this.apiJSON.championsObj[championName]
+    },
     handleAPICall (response) {
       this.apiJSON.api = response
-      this.apiJSON.championsObj =
+      this.apiJSON.championsObj = this.apiJSON.api.data.data
       this.initializeChampionsListFromAPICall(response)
     },
     initializeChampionsListFromAPICall (response) {
@@ -32,7 +44,12 @@ export default {
       this.championsList = Object.keys(championDataObj)
     }
   },
-  computed: {}
+  computed: {
+    aatrox () {
+      let Aatrox = this.championsList[0]
+      return this.apiJSON.championsObj.Aatrox
+    }
+  }
 }
 </script>
 
