@@ -5,7 +5,7 @@
       <img v-bind:src="championImageURL">
     </div>
     <div class="champion-name">
-      {{ championObj.name }}
+      {{ championObj.name }}, {{ championObj.title}}
     </div>
 
   </div>
@@ -16,7 +16,7 @@
     props: [ 'championObj' ],
     data() {
       return {
-        baseImageUrl: `https://ddragon.leagueoflegends.com/cdn/7.10.1/img/champion/`
+        baseImageUrl: `https://ddragon.leagueoflegends.com/cdn/8.14.1/img/champion/`
       }
     },
     components: {},
