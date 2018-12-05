@@ -15,16 +15,16 @@
       </div>
     </div>
 
-    <div class="suggested-lane-champion" v-for="lane in lanes">
-      <div class="suggested-top-laners" v-show="currentComposition.topLane.champions.length > 0">
-       Hi Hello  {{currentComposition.topLane.champions}}
-      </div>
+    <div class="suggested-top-laners" v-show="currentComposition.topLane.champions.length > 0">
+     <ChampionDisplayComponent v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion"></ChampionDisplayComponent>
+     {{currentComposition.topLane.champions}}
     </div>
 
   </div>
 </template>
 
 <script>
+  import ChampionDisplayComponent from '../ChampionDisplayComponent/championDisplayComponent.vue'
   export default {
     props: [],
     data() {
@@ -66,12 +66,17 @@
         }
       }
     },
-    components: {},
+    components: {
+      ChampionDisplayComponent
+    },
     mounted() {
       this.axios.get(this.apiLink).then(response => (this.handleAPICall(response)))
     },
     computed: {},
     methods: {
+      getChampionObjFromName (championName) {
+        return this.apiJSON.championsObj[championName]
+      },
       handleAPICall (response) {
         this.apiJSON.api = response
         this.apiJSON.championsObj = this.apiJSON.api.data.data
