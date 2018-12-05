@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <!-- <ChampionList></ChampionList> -->
+    <SimpleTeamBuilder></SimpleTeamBuilder>
   </div>
 </template>
 
 <script>
-import championList from './ChampionList/championList.vue'
+import ChampionList from './ChampionList/championList.vue'
+import SimpleTeamBuilder from './SimpleTeamBuilder/simpleTeamBuilder.vue'
 
 export default {
   name: 'app',
   components: {
-    ChampionList: championList
+    ChampionList,
+    SimpleTeamBuilder
   },
   data () {
     return {}
