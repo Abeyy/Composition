@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     getChampionObjFromName (championName) {
-      console.log(this.apiJSON.championsObj[championName])
       return this.apiJSON.championsObj[championName]
     },
     handleAPICall (response) {
