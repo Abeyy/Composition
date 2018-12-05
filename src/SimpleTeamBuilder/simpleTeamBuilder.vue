@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="simple-team-builder">
     <h1> Choose Your Team Composition: </h1>
     <div class="role-selection-section">
       <button class="btn btn-primary" @click="showLaneOptions('topLane')"> Top Lane </button>
@@ -130,5 +130,21 @@
     cursor: pointer;
   }
 
+  .simple-team-builder::after {
+    content: "";
+    background: url('../assets/simpleWallpaper.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    opacity: 0.65;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
 
 </style>
