@@ -1,10 +1,10 @@
 //TODO: pass in champion information and custom styles as props.
 <template>
   <div class="championDisplayComponent">
-    <div class="champion-image">
-      <img v-bind:src="championImageURL">
+    <div v-if="!hideChampionImage" class="champion-image">
+      <img :style="imageStyles" v-bind:src="championImageURL">
     </div>
-    <div class="champion-name">
+    <div v-if="!hideChampionName" class="champion-name">
       {{ championObj.name }}, {{ championObj.title}}
     </div>
 
@@ -13,7 +13,7 @@
 
 <script>
   export default {
-    props: [ 'championObj' ],
+    props: [ 'championObj', 'hideChampionImage', 'hideChampionName', 'imageStyles' ],
     data() {
       return {
         baseImageUrl: `https://ddragon.leagueoflegends.com/cdn/8.14.1/img/champion/`
