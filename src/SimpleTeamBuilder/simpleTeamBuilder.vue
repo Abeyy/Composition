@@ -134,12 +134,6 @@
   @color4: #004346;
   @color5: #078965;
 
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #FFCC00;
-  }
   .lane-option {
     cursor: pointer;
   }
