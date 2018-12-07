@@ -14,6 +14,10 @@
               <div class="btn btn-info top-lane-options lane-option" @click="optionSelected('topLane', option)" v-for="option in topLaneOptions">
                 {{option}}
               </div>
+
+              <div class="suggested-top-laners" v-show="currentComposition.topLane.champions.length > 0">
+                <ChampionDisplayComponent v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion"></ChampionDisplayComponent>
+              </div>
             </div>
           </div>
         </div>
@@ -74,9 +78,7 @@
         </div>
       </div> -->
 
-      <div class="suggested-top-laners" v-show="currentComposition.topLane.champions.length > 0">
-       <ChampionDisplayComponent v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion"></ChampionDisplayComponent>
-      </div>
+
     </div>
     </div>
   </div>
@@ -207,7 +209,7 @@
       .card-body {
         padding: 10px;
       }
-      
+
       .lane-option {
         margin: 1px;
       }
