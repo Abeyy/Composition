@@ -1,25 +1,27 @@
 <template>
   <div class="simple-team-builder">
-    <h1> Choose Your Team Composition: </h1>
-    <div class="role-selection-section">
-      <button class="btn btn-primary" @click="showLaneOptions('topLane')"> Top Lane </button>
-      <button class="btn btn-primary" @click="showLaneOptions('jungle')"> Jungle </button>
-      <button class="btn btn-primary" @click="showLaneOptions('midLane')"> Mid Lane </button>
-      <button class="btn btn-primary" @click="showLaneOptions('botLane')"> Bot Lane </button>
-      <button class="btn btn-primary" @click="showLaneOptions('support')"> Support </button>
-    </div>
+    <div class="opacity-overlay">
+    <div class="simple-team-overlay">
+      <h1> Choose Your Team Composition: </h1>
+      <div class="role-selection-section">
+        <button class="btn btn-primary" @click="showLaneOptions('topLane')"> Top Lane </button>
+        <button class="btn btn-primary" @click="showLaneOptions('jungle')"> Jungle </button>
+        <button class="btn btn-primary" @click="showLaneOptions('midLane')"> Mid Lane </button>
+        <button class="btn btn-primary" @click="showLaneOptions('botLane')"> Bot Lane </button>
+        <button class="btn btn-primary" @click="showLaneOptions('support')"> Support </button>
+      </div>
 
-    <div class="lane-options">
-      <div class="top-lane-options lane-option" @click="optionSelected('topLane', option)" v-show="showTopLaneOptions" v-for="option in topLaneOptions">
-        {{option}}
+      <div class="lane-options">
+        <div class="top-lane-options lane-option" @click="optionSelected('topLane', option)" v-show="showTopLaneOptions" v-for="option in topLaneOptions">
+          {{option}}
+        </div>
+      </div>
+
+      <div class="suggested-top-laners" v-show="currentComposition.topLane.champions.length > 0">
+       <ChampionDisplayComponent v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion"></ChampionDisplayComponent>
       </div>
     </div>
-
-    <div class="suggested-top-laners" v-show="currentComposition.topLane.champions.length > 0">
-     <ChampionDisplayComponent v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion"></ChampionDisplayComponent>
-     {{currentComposition.topLane.champions}}
     </div>
-
   </div>
 </template>
 
@@ -125,26 +127,42 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+  @color1: #74B3CE;
+  @color2: #508991;
+  @color3: #172A3A;
+  @color4: #004346;
+  @color5: #078965;
+
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #FFCC00;
+  }
   .lane-option {
     cursor: pointer;
   }
 
-  .simple-team-builder::after {
-    content: "";
-    background: url('../assets/simpleWallpaper.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  .simple-team-builder {
+    background-color: @color3;
+    text-align: center;
+    position:relative;
+    height: 100%;
 
-    opacity: 0.65;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: -1;
+  }
+
+  .simple-team-overlay {
+    z-index: 2;
+    color: @color1;
+  }
+
+  .role-selection-section {
+    button {
+      color: @color5;
+      background-color: @color4;
+      border-color: @color4;
+    }
   }
 
 </style>
