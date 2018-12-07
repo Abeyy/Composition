@@ -3,7 +3,64 @@
     <div class="opacity-overlay">
     <div class="simple-team-overlay">
       <h1> Choose Your Team Composition: </h1>
-      <div class="role-selection-section">
+
+      <div class="row">
+        <div class="col-xs-12 col-md-3 offset-md-1">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                Top Lane
+              </div>
+              <div class="btn btn-info top-lane-options lane-option" @click="optionSelected('topLane', option)" v-for="option in topLaneOptions">
+                {{option}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                Jungle
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                Mid Lane
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 col-md-3 offset-2">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                Bot Lane
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                Support
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="role-selection-section">
         <button class="btn btn-primary" @click="showLaneOptions('topLane')"> Top Lane </button>
         <button class="btn btn-primary" @click="showLaneOptions('jungle')"> Jungle </button>
         <button class="btn btn-primary" @click="showLaneOptions('midLane')"> Mid Lane </button>
@@ -15,7 +72,7 @@
         <div class="top-lane-options lane-option" @click="optionSelected('topLane', option)" v-show="showTopLaneOptions" v-for="option in topLaneOptions">
           {{option}}
         </div>
-      </div>
+      </div> -->
 
       <div class="suggested-top-laners" v-show="currentComposition.topLane.champions.length > 0">
        <ChampionDisplayComponent v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion"></ChampionDisplayComponent>
@@ -142,7 +199,19 @@
     background-color: @color3;
     text-align: center;
     position:relative;
-    height: 100%;
+    height: 100vh;
+
+    .card {
+      margin-bottom: 10px;
+
+      .card-body {
+        padding: 10px;
+      }
+      
+      .lane-option {
+        margin: 1px;
+      }
+    }
 
   }
 
