@@ -16,7 +16,7 @@
               </div>
 
               <div class="suggested-top-laners" v-show="currentComposition.topLane.champions.length > 0">
-                <ChampionDisplayComponent v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion"></ChampionDisplayComponent>
+                <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
               </div>
             </div>
           </div>
@@ -180,6 +180,20 @@
           }
         })
 
+        this.sortChampionListByRole(lane, option)
+      },
+      sortChampionListByRole (lane, option) {
+        let rolesArray = this.currentComposition[lane].roles
+        let championsArray = this.currentComposition[lane].champions
+
+        championsArray.sort((a,b) => {
+          let aRoles = this.apiJSON.championsObj[a].tags
+          let bRoles = this.apiJSON.championsObj[b].tags
+
+          let aSimilar = aRoles.filter(value => -1 !== rolesArray.indexOf(value));
+          let bSimilar = bRoles.filter(value => -1 !== rolesArray.indexOf(value));
+          return bSimilar.length - aSimilar.length
+        })
       }
     },
     watch: {}
@@ -214,7 +228,6 @@
         margin: 1px;
       }
     }
-
   }
 
   .simple-team-overlay {
@@ -228,6 +241,10 @@
       background-color: @color4;
       border-color: @color4;
     }
+  }
+
+  .championDisplayComponent {
+    display: inline-block;
   }
 
 </style>
