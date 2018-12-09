@@ -132,7 +132,6 @@
       initializeChampionsListFromAPICall (response) {
         let championDataObj = this.apiJSON.api.data.data
         this.championsList = Object.keys(championDataObj)
-      }
       },
       optionSelected (lane, option) {
         let rolesArray = this.currentComposition[lane].roles
