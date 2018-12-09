@@ -158,6 +158,33 @@
         let championDataObj = this.apiJSON.api.data.data
         this.championsList = Object.keys(championDataObj)
       },
+      deselectOptionAndRemoveChampions(lane, option) {
+        let rolesArray = this.currentComposition[lane].roles
+        let championsArray = this.currentComposition[lane].champions
+
+        rolesArray.splice(rolesArray.indexOf(option), 1)
+
+        // If there is only one role remaining, clear out the list so we can add solely that role later
+        // We need to do this here cause we dont want to keep clearing out the list in the loop.
+        if (rolesArray.length === 1) {
+          championsArray.length = 0
+        }
+
+        // We have to map on championsList instead of championsArray because championsArray gets mutated in the loop, which caused weird behavior
+        this.championsList.map((champion) => {
+          // If there are no roles left, deselect everything.
+          if (rolesArray.length === 0) {
+            if (this.apiJSON.championsObj[champion].tags.includes(option) && championsArray.includes(champion)) {
+              championsArray.splice(champion, 1)
+            }
+            // If there is one role remaining, clear out the list and only add that one role.
+          } else if (rolesArray.length === 1) {
+            if (this.apiJSON.championsObj[champion].tags.includes(rolesArray[0]) && !championsArray.includes(champion)) {
+              championsArray.push(champion)
+            }
+          }
+        })
+      },
       optionSelected (lane, option) {
         let rolesArray = this.currentComposition[lane].roles
         let championsArray = this.currentComposition[lane].champions
@@ -168,6 +195,8 @@
             rolesArray.shift()
           }
           rolesArray.push(option)
+        } else {
+          return this.deselectOptionAndRemoveChampions(lane, option)
         }
 
         // If there are two roles, we only want champions that have BOTH roles so clear out the array:
