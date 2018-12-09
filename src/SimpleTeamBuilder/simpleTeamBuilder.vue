@@ -172,10 +172,10 @@
 
         if (!rolesArray.includes(option)) {
           if (rolesArray.length == 2) {
-            rolesArray[0] = option
-          } else {
-            rolesArray.push(option)
+            // Remove the first element in roles, then shift the array down.
+            rolesArray.shift()
           }
+          rolesArray.push(option)
         }
 
         // If there are two roles, we only want champions that have BOTH roles so clear out the array:
@@ -186,9 +186,12 @@
         this.championsList.map((champion) => {
           if (rolesArray && rolesArray.length === 2) {
             // Need to sort both roles and champion tags, then see if the arrays are equal
-            rolesArray.sort()
-            this.apiJSON.championsObj[champion].tags.sort()
-            let equal = rolesArray.length == this.apiJSON.championsObj[champion].tags.length && rolesArray.every((element, index)=> element === this.apiJSON.championsObj[champion].tags[index] );
+            // Copy over array using empty .slice()
+            let rolesArrayCopy = rolesArray.slice()
+            let championTagsCopy = this.apiJSON.championsObj[champion].tags.slice()
+            rolesArrayCopy.sort()
+            championTagsCopy.sort()
+            let equal = rolesArrayCopy.length == championTagsCopy.length && rolesArrayCopy.every((element, index)=> element === championTagsCopy[index]);
 
             if (equal && !championsArray.includes(champion)) {
               championsArray.push(champion)
