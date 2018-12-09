@@ -163,26 +163,27 @@
         let isSelectedOption
         switch (option) {
           case "Mage":
-            btnClassName = 'btn-primary'
+            btnClassName = 'btn-outline-primary'
             break
           case "Tank":
-            btnClassName = 'btn-secondary'
+            btnClassName = 'btn-outline-secondary'
             break
           case "Marksman":
-            btnClassName = 'btn-success'
+            btnClassName = 'btn-outline-success'
             break
           case "Assassin":
-            btnClassName = 'btn-danger'
+            btnClassName = 'btn-outline-danger'
             break
           case "Fighter":
-            btnClassName = 'btn-warning'
+            btnClassName = 'btn-outline-warning'
             break
           case "Support":
-            btnClassName = 'btn-info'
+            btnClassName = 'btn-outline-info'
             break
         }
 
-        this.currentComposition[lane].roles.includes(option) ? '' : isSelectedOption = 'unselected-option'
+        this.currentComposition[lane].roles.includes(option) ? btnClassName = btnClassName.replace('outline-','') : isSelectedOption = 'unselected-option'
+
 
         return [btnClassName, isSelectedOption]
       },
