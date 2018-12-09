@@ -174,16 +174,26 @@
           if (rolesArray.length == 2) {
             rolesArray[0] = option
           } else {
-            this.currentComposition[lane].roles.push(option)
+            rolesArray.push(option)
           }
         }
 
-        console.log(rolesArray)
-
-        this.championsArray = []
+        // If there are two roles, we only want champions that have BOTH roles so clear out the array:
+        if (rolesArray && rolesArray.length === 2) {
+          championsArray.length = 0
+        }
 
         this.championsList.map((champion) => {
-          if (this.apiJSON.championsObj[champion].tags.includes(option) && !championsArray.includes(champion)) {
+          if (rolesArray && rolesArray.length === 2) {
+            // Need to sort both roles and champion tags, then see if the arrays are equal
+            rolesArray.sort()
+            this.apiJSON.championsObj[champion].tags.sort()
+            let equal = rolesArray.length == this.apiJSON.championsObj[champion].tags.length && rolesArray.every((element, index)=> element === this.apiJSON.championsObj[champion].tags[index] );
+
+            if (equal && !championsArray.includes(champion)) {
+              championsArray.push(champion)
+            }
+          } else if (this.apiJSON.championsObj[champion].tags.includes(option) && !championsArray.includes(champion)) {
             championsArray.push(champion)
           }
         })
