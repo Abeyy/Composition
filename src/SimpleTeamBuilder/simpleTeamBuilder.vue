@@ -2,7 +2,7 @@
   <div class="simple-team-builder">
     <div class="opacity-overlay">
     <div class="simple-team-overlay">
-      <h1> Choose Your Team Composition: </h1>
+      <h1> Choose Your Team Composition:</h1>
 
       <div class="row">
         <div class="col-xs-12 col-md-3 offset-md-1">
@@ -11,7 +11,7 @@
               <div class="card-title">
                 Top Lane
               </div>
-              <div class="btn btn-info lane-option" :class="[currentComposition.topLane.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('topLane', option)" v-for="option in championTags">
+              <div class="btn lane-option" :class="setOptionButtonClass('topLane', option)" @click="optionSelected('topLane', option)" v-for="(option, index) in championTags">
                 {{option}}
               </div>
 
@@ -28,7 +28,7 @@
               <div class="card-title">
                 Jungle
               </div>
-              <div class="btn btn-info lane-option" :class="[currentComposition.jungle.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('jungle', option)" v-for="option in championTags">
+              <div class="btn lane-option" :class="setOptionButtonClass('jungle', option)" @click="optionSelected('jungle', option)" v-for="option in championTags">
                 {{option}}
               </div>
 
@@ -45,7 +45,7 @@
               <div class="card-title">
                 Mid Lane
               </div>
-              <div class="btn btn-info lane-option" :class="[currentComposition.midLane.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('midLane', option)" v-for="option in championTags">
+              <div class="btn lane-option" :class="setOptionButtonClass('midLane', option)" @click="optionSelected('midLane', option)" v-for="option in championTags">
                 {{option}}
               </div>
 
@@ -64,7 +64,7 @@
               <div class="card-title">
                 Bot Lane
               </div>
-              <div class="btn btn-info lane-option" :class="[currentComposition.botLane.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('botLane', option)" v-for="option in championTags">
+              <div class="btn lane-option" :class="setOptionButtonClass('botLane', option)" @click="optionSelected('botLane', option)" v-for="option in championTags">
                 {{option}}
               </div>
 
@@ -81,7 +81,7 @@
               <div class="card-title">
                 Support
               </div>
-              <div class="btn btn-info lane-option" :class="[currentComposition.support.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('support', option)" v-for="option in championTags">
+              <div class="btn lane-option" :class="setOptionButtonClass('support', option)" @click="optionSelected('support', option)" v-for="option in championTags">
                 {{option}}
               </div>
 
@@ -158,7 +158,35 @@
         let championDataObj = this.apiJSON.api.data.data
         this.championsList = Object.keys(championDataObj)
       },
-      deselectOptionAndRemoveChampions(lane, option) {
+      setOptionButtonClass (lane, option) {
+        let btnClassName
+        let isSelectedOption
+        switch (option) {
+          case "Mage":
+            btnClassName = 'btn-primary'
+            break
+          case "Tank":
+            btnClassName = 'btn-secondary'
+            break
+          case "Marksman":
+            btnClassName = 'btn-success'
+            break
+          case "Assassin":
+            btnClassName = 'btn-danger'
+            break
+          case "Fighter":
+            btnClassName = 'btn-warning'
+            break
+          case "Support":
+            btnClassName = 'btn-info'
+            break
+        }
+
+        this.currentComposition[lane].roles.includes(option) ? '' : isSelectedOption = 'unselected-option'
+
+        return [btnClassName, isSelectedOption]
+      },
+      deselectOptionAndRemoveChampions (lane, option) {
         let rolesArray = this.currentComposition[lane].roles
         let championsArray = this.currentComposition[lane].champions
 
@@ -186,6 +214,7 @@
         })
       },
       optionSelected (lane, option) {
+        console.log(1, lane, option)
         let rolesArray = this.currentComposition[lane].roles
         let championsArray = this.currentComposition[lane].champions
 
@@ -292,5 +321,11 @@
   .championDisplayComponent {
     display: inline-block;
   }
+</style>
 
+<!-- Add global style to body to make the background color appear everywhere  -->
+<style>
+  body {
+    background-color: #172A3A;
+  }
 </style>
