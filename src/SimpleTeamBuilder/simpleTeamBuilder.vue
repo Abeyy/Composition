@@ -64,20 +64,6 @@
           </div>
         </div>
       </div>
-      <!-- <div class="role-selection-section">
-        <button class="btn btn-primary" @click="showLaneOptions('topLane')"> Top Lane </button>
-        <button class="btn btn-primary" @click="showLaneOptions('jungle')"> Jungle </button>
-        <button class="btn btn-primary" @click="showLaneOptions('midLane')"> Mid Lane </button>
-        <button class="btn btn-primary" @click="showLaneOptions('botLane')"> Bot Lane </button>
-        <button class="btn btn-primary" @click="showLaneOptions('support')"> Support </button>
-      </div>
-
-      <div class="lane-options">
-        <div class="top-lane-options lane-option" @click="optionSelected('topLane', option)" v-show="showTopLaneOptions" v-for="option in topLaneOptions">
-          {{option}}
-        </div>
-      </div> -->
-
 
     </div>
     </div>
@@ -146,25 +132,7 @@
       initializeChampionsListFromAPICall (response) {
         let championDataObj = this.apiJSON.api.data.data
         this.championsList = Object.keys(championDataObj)
-      },
-      showLaneOptions (lane) {
-        switch (lane) {
-          case 'topLane':
-            this.showTopLaneOptions = true
-            break;
-          case 'jungle':
-            this.showJungleOptions = true
-            break;
-          case 'midLane':
-            this.showMidLaneOptions = true
-            break;
-          case 'bottomLane':
-            this.showBottomLaneOptions = true
-            break;
-          case 'support':
-            this.showSupportOptions = true
-            break;
-        }
+      }
       },
       optionSelected (lane, option) {
         let rolesArray = this.currentComposition[lane].roles
