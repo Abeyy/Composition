@@ -11,7 +11,7 @@
               <div class="card-title">
                 Top Lane
               </div>
-              <div class="btn btn-info top-lane-options lane-option" @click="optionSelected('topLane', option)" v-for="option in topLaneOptions">
+              <div class="btn btn-info top-lane-options lane-option" :class="[currentComposition.topLane.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('topLane', option)" v-for="option in topLaneOptions">
                 {{option}}
               </div>
 
@@ -171,8 +171,16 @@
         let championsArray = this.currentComposition[lane].champions
 
         if (!rolesArray.includes(option)) {
-          this.currentComposition[lane].roles.push(option)
+          if (rolesArray.length == 2) {
+            rolesArray[0] = option
+          } else {
+            this.currentComposition[lane].roles.push(option)
+          }
         }
+
+        console.log(rolesArray)
+
+        this.championsArray = []
 
         this.championsList.map((champion) => {
           if (this.apiJSON.championsObj[champion].tags.includes(option) && !championsArray.includes(champion)) {
@@ -209,6 +217,10 @@
 
   .lane-option {
     cursor: pointer;
+  }
+
+  .unselected-option {
+    opacity: 0.5;
   }
 
   .simple-team-builder {
