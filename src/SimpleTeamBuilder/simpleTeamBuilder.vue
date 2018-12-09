@@ -11,7 +11,7 @@
               <div class="card-title">
                 Top Lane
               </div>
-              <div class="btn btn-info top-lane-options lane-option" :class="[currentComposition.topLane.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('topLane', option)" v-for="option in championTags">
+              <div class="btn btn-info lane-option" :class="[currentComposition.topLane.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('topLane', option)" v-for="option in championTags">
                 {{option}}
               </div>
 
@@ -28,6 +28,13 @@
               <div class="card-title">
                 Jungle
               </div>
+              <div class="btn btn-info lane-option" :class="[currentComposition.jungle.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('jungle', option)" v-for="option in championTags">
+                {{option}}
+              </div>
+
+              <div class="suggested-top-laners" v-show="currentComposition.jungle.champions.length > 0">
+                <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.jungle.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
+              </div>
             </div>
           </div>
         </div>
@@ -37,6 +44,13 @@
             <div class="card-body">
               <div class="card-title">
                 Mid Lane
+              </div>
+              <div class="btn btn-info lane-option" :class="[currentComposition.midLane.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('midLane', option)" v-for="option in championTags">
+                {{option}}
+              </div>
+
+              <div class="suggested-top-laners" v-show="currentComposition.midLane.champions.length > 0">
+                <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.midLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
               </div>
             </div>
           </div>
@@ -50,6 +64,13 @@
               <div class="card-title">
                 Bot Lane
               </div>
+              <div class="btn btn-info lane-option" :class="[currentComposition.botLane.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('botLane', option)" v-for="option in championTags">
+                {{option}}
+              </div>
+
+              <div class="suggested-top-laners" v-show="currentComposition.botLane.champions.length > 0">
+                <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.botLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
+              </div>
             </div>
           </div>
         </div>
@@ -59,6 +80,13 @@
             <div class="card-body">
               <div class="card-title">
                 Support
+              </div>
+              <div class="btn btn-info lane-option" :class="[currentComposition.support.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('support', option)" v-for="option in championTags">
+                {{option}}
+              </div>
+
+              <div class="suggested-top-laners" v-show="currentComposition.support.champions.length > 0">
+                <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.support.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
               </div>
             </div>
           </div>
