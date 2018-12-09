@@ -11,7 +11,7 @@
               <div class="card-title">
                 Top Lane
               </div>
-              <div class="btn btn-info top-lane-options lane-option" :class="[currentComposition.topLane.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('topLane', option)" v-for="option in topLaneOptions">
+              <div class="btn btn-info top-lane-options lane-option" :class="[currentComposition.topLane.roles.includes(option) ? '' : 'unselected-option']" @click="optionSelected('topLane', option)" v-for="option in championTags">
                 {{option}}
               </div>
 
@@ -84,6 +84,8 @@
         championsList: [],
         lanes: ['topLane', 'jungle', 'midLane', 'botLane', 'support'],
         topLaneOptions: ['Tank', 'Fighter', 'Mage', 'Assassin'],
+        //TODO: Add subclasses: https://na.leagueoflegends.com/en/news/game-updates/gameplay/taking-another-look-subclasses
+        championTags: ['Tank', 'Fighter', 'Mage', 'Assassin', 'Marksman', 'Support'],
         currentComposition: {
           topLane: {
             roles: [],
