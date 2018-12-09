@@ -214,7 +214,6 @@
         })
       },
       optionSelected (lane, option) {
-        console.log(1, lane, option)
         let rolesArray = this.currentComposition[lane].roles
         let championsArray = this.currentComposition[lane].champions
 
