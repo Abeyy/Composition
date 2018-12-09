@@ -82,11 +82,6 @@
           championsObj: {}
         },
         championsList: [],
-        showTopLaneOptions: false,
-        showJungleOptions: false,
-        showMidLaneOptions: false,
-        showBottomLaneOptions: false,
-        showSupportOptions: false,
         lanes: ['topLane', 'jungle', 'midLane', 'botLane', 'support'],
         topLaneOptions: ['Tank', 'Fighter', 'Mage', 'Assassin'],
         currentComposition: {
