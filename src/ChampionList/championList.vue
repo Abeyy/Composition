@@ -18,7 +18,7 @@ export default {
   data () {
     return {
       //TODO: Add these to champion list
-      apiLink: `http://ddragon.leagueoflegends.com/cdn/8.14.1/data/en_US/champion.json`,
+      apiLink: `https://ddragon.leagueoflegends.com/cdn/8.14.1/data/en_US/champion.json`,
       apiJSON: {
         api: {},
         championsObj: {}

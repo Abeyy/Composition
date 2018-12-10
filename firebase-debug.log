@@ -1,0 +1,99 @@
+[debug] [2018-12-10T01:55:47.121Z] ----------------------------------------------------------------------
+[debug] [2018-12-10T01:55:47.123Z] Command:       /usr/local/Cellar/node/9.9.0/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-12-10T01:55:47.123Z] CLI Version:   3.17.7
+[debug] [2018-12-10T01:55:47.123Z] Platform:      darwin
+[debug] [2018-12-10T01:55:47.124Z] Node Version:  v9.9.0
+[debug] [2018-12-10T01:55:47.124Z] Time:          Sun Dec 09 2018 17:55:47 GMT-0800 (PST)
+[debug] [2018-12-10T01:55:47.124Z] ----------------------------------------------------------------------
+[debug]
+[debug] [2018-12-10T01:55:47.140Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-10T01:55:47.140Z] > authorizing via signed-in user
+[debug] [2018-12-10T01:55:47.142Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/composition-483b1
+
+ Sun Dec 09 2018 17:55:47 GMT-0800 (PST)
+[debug] [2018-12-10T01:55:47.996Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-10T01:55:47.997Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/composition-483b1/tokens
+
+ Sun Dec 09 2018 17:55:47 GMT-0800 (PST)
+[debug] [2018-12-10T01:55:48.389Z] <<< HTTP RESPONSE 200
+[info]
+[info] === Deploying to 'composition-483b1'...
+[info]
+[info] i  deploying storage, hosting
+[debug] [2018-12-10T01:55:48.742Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/composition-483b1
+
+ Sun Dec 09 2018 17:55:48 GMT-0800 (PST)
+[debug] [2018-12-10T01:55:49.203Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2018-12-10T01:55:49.207Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/composition-483b1:test
+ { source: { files: [ [Object] ] } }
+ Sun Dec 09 2018 17:55:49 GMT-0800 (PST)
+[debug] [2018-12-10T01:55:49.634Z] <<< HTTP RESPONSE 200
+[info] ✔  storage: rules file storage.rules compiled successfully
+[info] i  storage: uploading rules storage.rules...
+[debug] [2018-12-10T01:55:49.637Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/composition-483b1/rulesets
+ { source: { files: [ [Object] ] } }
+ Sun Dec 09 2018 17:55:49 GMT-0800 (PST)
+[debug] [2018-12-10T01:55:49.864Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-10T01:55:49.864Z] [rules] created ruleset projects/composition-483b1/rulesets/b0b77f31-03a2-4ea4-94b3-bd62d36e01b1
+[info] i  hosting: preparing dist directory for upload...
+[debug] [2018-12-10T01:55:50.037Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/composition-483b1/uploads/-LTKoxvaaUM0Ybs6S0ya?fileCount=3&message=
+
+ Sun Dec 09 2018 17:55:50 GMT-0800 (PST)
+[debug] [2018-12-10T01:55:51.387Z] <<< HTTP RESPONSE 410
+[debug] [2018-12-10T01:55:51.387Z] <<< HTTP RESPONSE BODY undefined
+[debug] [2018-12-10T01:55:51.388Z] TypeError: Cannot read property 'error' of undefined
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:10:13)
+    at Request._callback (/usr/local/lib/node_modules/firebase-tools/lib/api.js:45:25)
+    at Request.self.callback (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:180:13)
+    at Request.emit (domain.js:421:20)
+    at Request.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:1163:10)
+    at Request.emit (events.js:180:13)
+    at Request.emit (domain.js:421:20)
+    at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/firebase-tools/node_modules/request/request.js:1085:12)
+    at Object.onceWrapper (events.js:272:13)
+[error]
+[error] Error: An unexpected error has occurred.
+[debug] [2018-12-10T01:56:15.184Z] ----------------------------------------------------------------------
+[debug] [2018-12-10T01:56:15.187Z] Command:       /usr/local/Cellar/node/9.9.0/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-12-10T01:56:15.187Z] CLI Version:   3.17.7
+[debug] [2018-12-10T01:56:15.187Z] Platform:      darwin
+[debug] [2018-12-10T01:56:15.187Z] Node Version:  v9.9.0
+[debug] [2018-12-10T01:56:15.188Z] Time:          Sun Dec 09 2018 17:56:15 GMT-0800 (PST)
+[debug] [2018-12-10T01:56:15.188Z] ----------------------------------------------------------------------
+[debug]
+[debug] [2018-12-10T01:56:15.204Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-12-10T01:56:15.204Z] > authorizing via signed-in user
+[debug] [2018-12-10T01:56:15.206Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/composition-483b1
+
+ Sun Dec 09 2018 17:56:15 GMT-0800 (PST)
+[debug] [2018-12-10T01:56:15.668Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-10T01:56:15.669Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/composition-483b1/tokens
+
+ Sun Dec 09 2018 17:56:15 GMT-0800 (PST)
+[debug] [2018-12-10T01:56:16.021Z] <<< HTTP RESPONSE 200
+[info]
+[info] === Deploying to 'composition-483b1'...
+[info]
+[info] i  deploying storage, hosting
+[debug] [2018-12-10T01:56:16.322Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/composition-483b1
+
+ Sun Dec 09 2018 17:56:16 GMT-0800 (PST)
+[debug] [2018-12-10T01:56:16.800Z] <<< HTTP RESPONSE 200
+[info] i  storage: checking storage.rules for compilation errors...
+[debug] [2018-12-10T01:56:16.803Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/composition-483b1:test
+ { source: { files: [ [Object] ] } }
+ Sun Dec 09 2018 17:56:16 GMT-0800 (PST)
+[debug] [2018-12-10T01:56:17.229Z] <<< HTTP RESPONSE 200
+[info] ✔  storage: rules file storage.rules compiled successfully
+[info] i  storage: uploading rules storage.rules...
+[debug] [2018-12-10T01:56:17.232Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/composition-483b1/rulesets
+ { source: { files: [ [Object] ] } }
+ Sun Dec 09 2018 17:56:17 GMT-0800 (PST)
+[debug] [2018-12-10T01:56:17.701Z] <<< HTTP RESPONSE 200
+[debug] [2018-12-10T01:56:17.701Z] [rules] created ruleset projects/composition-483b1/rulesets/2c396c49-4e52-4ce8-8957-5a08b73e7e64
+[info] i  hosting: preparing dist directory for upload...
+[debug] [2018-12-10T01:56:17.875Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/composition-483b1/uploads/-LTKp3eomt8AuNhIZG-_?fileCount=3&message=
+
+ Sun Dec 09 2018 17:56:17 GMT-0800 (PST)
