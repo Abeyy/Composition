@@ -2,84 +2,90 @@
   <div class="simple-team-builder">
     <div class="opacity-overlay">
     <div class="simple-team-overlay">
-      <h1> Choose Your Team Composition:</h1>
 
-      <div class="cards-left">
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title">
-              Top Lane
-            </div>
-            <div class="btn lane-option" :class="setOptionButtonClass('topLane', option)" @click="optionSelected('topLane', option)" v-for="(option, index) in championTags">
-              {{option}}
-            </div>
+      <div class="row">
+        <div class="cards-left col-md-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                Top Lane
+              </div>
+              <div class="btn lane-option" :class="setOptionButtonClass('topLane', option)" @click="optionSelected('topLane', option)" v-for="(option, index) in championTags">
+                {{option}}
+              </div>
 
-            <div class="suggested-top-laners" v-show="currentComposition.topLane.champions.length > 0">
-              <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
+              <div class="suggested-top-laners" v-show="currentComposition.topLane.champions.length > 0">
+                <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                Jungle
+              </div>
+              <div class="btn lane-option" :class="setOptionButtonClass('jungle', option)" @click="optionSelected('jungle', option)" v-for="option in championTags">
+                {{option}}
+              </div>
+
+              <div class="suggested-top-laners" v-show="currentComposition.jungle.champions.length > 0">
+                <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.jungle.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                Mid Lane
+              </div>
+              <div class="btn lane-option" :class="setOptionButtonClass('midLane', option)" @click="optionSelected('midLane', option)" v-for="option in championTags">
+                {{option}}
+              </div>
+
+              <div class="suggested-top-laners" v-show="currentComposition.midLane.champions.length > 0">
+                <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.midLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                Bot Lane
+              </div>
+              <div class="btn lane-option" :class="setOptionButtonClass('botLane', option)" @click="optionSelected('botLane', option)" v-for="option in championTags">
+                {{option}}
+              </div>
+
+              <div class="suggested-top-laners" v-show="currentComposition.botLane.champions.length > 0">
+                <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.botLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="card-title">
+                Support
+              </div>
+              <div class="btn lane-option" :class="setOptionButtonClass('support', option)" @click="optionSelected('support', option)" v-for="option in championTags">
+                {{option}}
+              </div>
+
+              <div class="suggested-top-laners" v-show="currentComposition.support.champions.length > 0">
+                <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.support.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
+              </div>
             </div>
           </div>
         </div>
-
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title">
-              Jungle
-            </div>
-            <div class="btn lane-option" :class="setOptionButtonClass('jungle', option)" @click="optionSelected('jungle', option)" v-for="option in championTags">
-              {{option}}
-            </div>
-
-            <div class="suggested-top-laners" v-show="currentComposition.jungle.champions.length > 0">
-              <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.jungle.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title">
-              Mid Lane
-            </div>
-            <div class="btn lane-option" :class="setOptionButtonClass('midLane', option)" @click="optionSelected('midLane', option)" v-for="option in championTags">
-              {{option}}
-            </div>
-
-            <div class="suggested-top-laners" v-show="currentComposition.midLane.champions.length > 0">
-              <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.midLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title">
-              Bot Lane
-            </div>
-            <div class="btn lane-option" :class="setOptionButtonClass('botLane', option)" @click="optionSelected('botLane', option)" v-for="option in championTags">
-              {{option}}
-            </div>
-
-            <div class="suggested-top-laners" v-show="currentComposition.botLane.champions.length > 0">
-              <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.botLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-body">
-            <div class="card-title">
-              Support
-            </div>
-            <div class="btn lane-option" :class="setOptionButtonClass('support', option)" @click="optionSelected('support', option)" v-for="option in championTags">
-              {{option}}
-            </div>
-
-            <div class="suggested-top-laners" v-show="currentComposition.support.champions.length > 0">
-              <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.support.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
-            </div>
-          </div>
+        <div class="main-section-right col-md-8 col-md-offset-1">
+          <h1>Create Your Ideal Team Composition</h1>
+          <h3>Tag roles in each position based on what you need.</h3>
         </div>
       </div>
+
 
     </div>
     </div>
@@ -295,6 +301,7 @@
 
   .simple-team-overlay {
     z-index: 2;
+    margin-top: 25px;
     color: @color1;
   }
 
@@ -313,7 +320,8 @@
   // TODO: This is definitely not going to be mobile responsive
   .cards-left {
     max-width: 400px;
-    margin-left: 10px;
+    height: 100%;
+    margin-left: 15px;
   }
 </style>
 
