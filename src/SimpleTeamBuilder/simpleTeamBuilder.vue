@@ -64,29 +64,29 @@
           <h3>Tag roles in each position based on what you need.</h3>
 
           <div class="selected-champions-section">
-            <div v-show="currentComposition.topLane.champions.length > 0">
+            <div v-show="currentComposition.topLane.champions.length > 0" class="row lane-selected-champions">
               <!-- <img src="/static/images/topLaneIcon.png"> -->
-              <img src="https://firebasestorage.googleapis.com/v0/b/composition-483b1.appspot.com/o/topLaneIcon.png?alt=media&token=33db9277-47dd-44b7-a0f0-116739e9f465">
+              <img class="lane-icon" src="https://firebasestorage.googleapis.com/v0/b/composition-483b1.appspot.com/o/topLaneIcon.png?alt=media&token=33db9277-47dd-44b7-a0f0-116739e9f465">
               <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.topLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
             </div>
-            <div v-show="currentComposition.jungle.champions.length > 0">
+            <div v-show="currentComposition.jungle.champions.length > 0" class="row lane-selected-champions">
               <!-- <img src="/static/images/jungleIcon.png"> -->
-              <img src="https://firebasestorage.googleapis.com/v0/b/composition-483b1.appspot.com/o/jungleIcon.png?alt=media&token=6a450eca-261b-470b-b7c4-ff54bc52a45e">
+              <img class="lane-icon" src="https://firebasestorage.googleapis.com/v0/b/composition-483b1.appspot.com/o/jungleIcon.png?alt=media&token=6a450eca-261b-470b-b7c4-ff54bc52a45e">
               <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.jungle.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
             </div>
-            <div v-show="currentComposition.midLane.champions.length > 0">
+            <div v-show="currentComposition.midLane.champions.length > 0" class="row lane-selected-champions">
               <!-- <img src="/static/images/midLaneIcon.png"> -->
-              <img src="https://firebasestorage.googleapis.com/v0/b/composition-483b1.appspot.com/o/midLaneIcon.png?alt=media&token=baef3fad-4dc7-4365-9987-198610b8737f">
+              <img class="lane-icon" src="https://firebasestorage.googleapis.com/v0/b/composition-483b1.appspot.com/o/midLaneIcon.png?alt=media&token=baef3fad-4dc7-4365-9987-198610b8737f">
               <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.midLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
             </div>
-            <div v-show="currentComposition.botLane.champions.length > 0">
+            <div v-show="currentComposition.botLane.champions.length > 0" class="row lane-selected-champions">
               <!-- <img src="/static/images/botLaneIcon.png"> -->
-              <img src="https://firebasestorage.googleapis.com/v0/b/composition-483b1.appspot.com/o/botLaneIcon.png?alt=media&token=5eadc0f0-2d41-46e2-9d1e-6754f46f8f26">
+              <img class="lane-icon" src="https://firebasestorage.googleapis.com/v0/b/composition-483b1.appspot.com/o/botLaneIcon.png?alt=media&token=5eadc0f0-2d41-46e2-9d1e-6754f46f8f26">
               <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.botLane.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
             </div>
-            <div v-show="currentComposition.support.champions.length > 0">
+            <div v-show="currentComposition.support.champions.length > 0" class="row lane-selected-champions">
               <!-- <img src="/static/images/supportIcon.png"> -->
-              <img src="https://firebasestorage.googleapis.com/v0/b/composition-483b1.appspot.com/o/supportIcon.png?alt=media&token=77603fb2-36d2-4ee8-be14-044841e1a117">
+              <img class="lane-icon" src="https://firebasestorage.googleapis.com/v0/b/composition-483b1.appspot.com/o/supportIcon.png?alt=media&token=77603fb2-36d2-4ee8-be14-044841e1a117">
               <ChampionDisplayComponent class="championDisplayComponent" v-for="champion in currentComposition.support.champions" :championObj="getChampionObjFromName(champion)" :key="champion" :imageStyles="'height:50px;width:50px;margin:5px;'" :hideChampionName="true"></ChampionDisplayComponent>
             </div>
           </div>
@@ -322,6 +322,8 @@
 
   .championDisplayComponent {
     display: inline-block;
+    position: relative;
+    top: 8px;
   }
 
   // TODO: This is definitely not going to be mobile responsive
@@ -329,6 +331,20 @@
     max-width: 400px;
     height: 100%;
     margin-left: 15px;
+  }
+
+  .lane-icon {
+    height: 75px;
+    width: 75px;
+  }
+
+  .selected-champions-section {
+    margin-top: 25px;
+    margin-left: 25px;
+  }
+
+  .lane-selected-champions {
+    margin-bottom: 10px;
   }
 </style>
 
