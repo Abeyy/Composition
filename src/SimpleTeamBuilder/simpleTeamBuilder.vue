@@ -3,7 +3,7 @@
     <div class="simple-team-overlay">
 
       <div class="row">
-        <div class="cards-left col-md-3">
+        <div class="cards-left col-md-3 sticky-top">
           <div class="card">
             <div class="card-body">
               <div class="card-title">
@@ -61,7 +61,7 @@
         </div>
         <div class="main-section-right col-md-8 col-md-offset-1">
           <h1>Create Your Ideal Team Composition</h1>
-          <h3>Tag roles in each position based on what you need.</h3>
+          <h3>Tag up to (2) roles in each position based on what you need.</h3>
 
           <div class="selected-champions-section">
             <div v-show="currentComposition.topLane.champions.length > 0" class="row lane-selected-champions">
